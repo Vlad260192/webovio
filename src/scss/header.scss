@@ -1,0 +1,177 @@
+//====================================================================================================
+
+.header {
+	padding-top: rem(24);
+	padding-bottom: rem(24);
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+
+	&._header-scroll {
+		padding-top: rem(20);
+		padding-bottom: rem(20);
+		background-color: rgba(0, 0, 0, 0.8);
+	}
+
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: rem(10);
+	}
+
+	&__logo {
+		position: relative;
+		z-index: 5;
+		display: flex;
+		width: 100%;
+
+		svg {
+			width: rem(257);
+			height: rem(40);
+			object-fit: contain;
+			max-width: 100%;
+		}
+	}
+
+	&__menu {}
+}
+.menu {
+
+	&__wrapper {
+		position: relative;
+		z-index: 5;
+		width: rem(40);
+		height: rem(40);
+		border-radius: 50%;
+		background-color: #F5F6F7;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__body {
+
+		@media (max-width:$mobile){
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 100%;
+			height: 100%;
+			overflow: auto;
+			transition: left 0.4s; 
+			padding: rem(110) rem(15) rem(30) rem(15);
+			background-color: rgba(0, 0, 0, 0.75);
+
+			&::before{
+				content:'';
+				position: fixed;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				transition: left 0.4s;
+				height: rem(60);
+				z-index: 2;
+			}
+
+			.menu-open & {
+				left: 0;
+				&::before{
+					left: 0;
+					
+				}
+			}
+		}	
+	}
+
+	&__list {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: rem(15);
+
+		@media (max-width:$mobile){
+			display: flex;
+			flex-direction: column;
+			row-gap: 30px;
+		}
+	}
+
+	&__item {
+
+		@media (max-width:$mobile){
+		 
+		}
+	}
+
+	&__link {
+		white-space: nowrap;
+
+		@media (max-width:$mobile){
+			font-size: 40px;
+			 
+		}
+	}
+
+	&__icon {}
+}
+.icon-menu {
+}
+
+
+//====================================================================================================
+
+//Burger
+
+.icon-menu {
+	display: none;
+	@media (max-width: $mobile) {
+		display: block;
+		position: relative;
+		width: rem(18);
+		height: rem(13);
+		z-index: 5;
+		@media (any-hover: none) {
+			cursor: default;
+		}
+		span,
+		&::before,
+		&::after {
+			content: "";
+			transition: all 0.3s ease 0s;
+			right: 0;
+			position: absolute;
+			width: 100%;
+			height: rem(2);
+			background-color: #000;
+		}
+		&::before {
+			top: 0;
+		}
+		&::after {
+			bottom: 0;
+		}
+		span {
+			top: calc(50% - rem(1));
+		}
+		.menu-open & {
+			span {
+				width: 0;
+			}
+			&::before,
+			&::after {
+			}
+			&::before {
+				top: calc(50% - rem(1));
+				transform: rotate(-45deg);
+			}
+			&::after {
+				bottom: calc(50% - rem(1));
+				transform: rotate(45deg);
+			}
+		}
+	}
+}
+
