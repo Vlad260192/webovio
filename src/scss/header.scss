@@ -8,6 +8,7 @@
 	top: 0;
 	left: 0;
 	z-index: 50;
+	transition: all 0.4s;
 
 	&._header-scroll {
 		padding-top: rem(20);
@@ -39,18 +40,6 @@
 	&__menu {}
 }
 .menu {
-
-	&__wrapper {
-		position: relative;
-		z-index: 5;
-		width: rem(40);
-		height: rem(40);
-		border-radius: 50%;
-		background-color: #F5F6F7;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
 
 	&__body {
 
@@ -108,10 +97,16 @@
 
 	&__link {
 		white-space: nowrap;
+		font-family: $fontFamily;
+		font-size: rem(16);
+		line-height: math.div(38, 16);
+		font-weight: 600;
+		letter-spacing: rem(0);
+		text-transform: uppercase;
+		color: $whiteColor;
 
 		@media (max-width:$mobile){
-			font-size: 40px;
-			 
+			font-size: rem(24);
 		}
 	}
 
@@ -126,6 +121,23 @@
 //Burger
 
 .icon-menu {
+
+	&__wrapper {
+		display: none;
+
+		@media (max-width:$mobile){
+			position: relative;
+			z-index: 5;
+			width: rem(40);
+			height: rem(40);
+			border-radius: 50%;
+			background-color: #F5F6F7;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
 	display: none;
 	@media (max-width: $mobile) {
 		display: block;
